@@ -24,6 +24,7 @@ public:
     // Modify methods
     void addEnrollee(int id, std::string f_name, std::string s_name, int score, int spec);
     void addPersonalInfo(int id, int pass, std::string date, std::string place, std::string addr);
+    void addSpec(int id, std::string spec, int bp, int spp, int math, int physics, int bio, int chem);
 
     // View methods
     std::shared_ptr< sql::ResultSet > selectEnrolleBySpec(int spec);

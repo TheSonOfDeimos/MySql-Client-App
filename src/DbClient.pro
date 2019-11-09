@@ -17,20 +17,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     addEnrolleeWidget.cpp \
+    addSpecWidget.cpp \
     dbmaneger.cpp \
     enrolleetable.cpp \
     loginwidget.cpp \
     main.cpp \
     mainwindow.cpp \
-    persanalInfoWidget.cpp
+    persanalInfoWidget.cpp \
+    specTableWidget.cpp
 
 HEADERS += \
     addEnrolleeWidget.h \
+    addSpecWidget.h \
     dbmaneger.h \
     enrolleetable.h \
     loginwidget.h \
     mainwindow.h \
-    personalInfoWidget.h
+    personalInfoWidget.h \
+    specTableWidget.h
 
 FORMS += \
     mainwindow.ui
@@ -41,12 +45,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
-macx: LIBS += -L$$PWD/../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/lib64/ -lmysqlcppconn.7.8.0.18
+macx: LIBS += -L$$PWD/../../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/lib64/ -lmysqlcppconn.7.8.0.18
 
-INCLUDEPATH += $$PWD/../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/include
-DEPENDPATH += $$PWD/../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/include
+INCLUDEPATH += $$PWD/../../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/include
+DEPENDPATH += $$PWD/../../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/include
 
-macx: LIBS += -L$$PWD/../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/lib/ -lmysqlclient.21
+macx: LIBS += -L$$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/lib/ -lmysqlclient.21
 
-INCLUDEPATH += $$PWD/../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include
-DEPENDPATH += $$PWD/../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include
+INCLUDEPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include
+DEPENDPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include

@@ -8,7 +8,7 @@ EnrolleeTable::EnrolleeTable(QWidget* parent)
     setLayout(layout_);
 
     table_ = new QTableWidget(this);
-    table_ -> setColumnCount(5);
+
 
     update_button_ = new QPushButton("Update", this);
     add_enrollee_button_ = new QPushButton("Add", this);
@@ -28,9 +28,10 @@ EnrolleeTable::EnrolleeTable(QWidget* parent)
 
 void EnrolleeTable::init()
 {
+    table_ -> setColumnCount(5);
     table_ -> setHorizontalHeaderLabels({"ID", "First name", "Second name", "Speciality", "Exam score"});
 
-    auto res = db_handler_ -> queryToDb("SELECT * FROM mydb.specialisation_list");
+    auto res = db_handler_ -> queryToDb("SELECT * FROM mydb.specialisation_list ORDER BY specialisation");
 
     spec_list_.clear();
     spec_select_box_->clear();

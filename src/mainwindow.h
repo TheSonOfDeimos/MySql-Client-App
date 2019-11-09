@@ -12,6 +12,7 @@
 #include "loginwidget.h"
 #include "enrolleetable.h"
 #include "dbmaneger.h"
+#include "specTableWidget.h"
 
 class MainWindow : public QMainWindow
 {
@@ -28,6 +29,7 @@ private:
     QTabWidget* tab_;
     LoginWidget* login_widget_;
     EnrolleeTable* enrollee_table_;
+    SpecTableWidget* spec_table_;
 
     DbManeger* db_handler_;
 

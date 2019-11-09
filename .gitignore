@@ -1,0 +1,17 @@
+#MacOS files
+*.DS_Store
+
+#Qt files 
+moc_*
+build-*
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+

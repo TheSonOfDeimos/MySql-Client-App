@@ -67,6 +67,20 @@ void DbManeger::addPersonalInfo(int id, int pass, std::string date, std::string 
     }
 }
 
+void DbManeger::addSpec(int id, std::string spec, int bp, int spp, int math, int physics, int bio, int chem)
+{
+    std::string str = "CALL mydb.add_new_spec(" + std::to_string(id) + ", '" + spec + "', " +
+            std::to_string(bp) + ", " + std::to_string(spp) + ", " + std::to_string(math) + ", " +
+            std::to_string(physics) + ", + " + std::to_string(bio) + ", " + std::to_string(chem) + ")";
+    try {
+        stmt_ = std::shared_ptr< sql::Statement >(connection_handl_->createStatement());
+        stmt_->execute(str);
+        std::clog << "[ OK ] Query proceseed "  << str << "\n";
+    } catch (sql::SQLException& e) {
+        std::cerr << "[ ER ] " << e.what() << "\n";
+    }
+}
+
 std::shared_ptr< sql::ResultSet > DbManeger::selectEnrolleBySpec(int spec)
 {
     std::string str = "select * from mydb.enrollee_information WHERE spec_num=" + std::to_string(spec) + "\nORDER BY second_name";
