@@ -24,7 +24,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     persanalInfoWidget.cpp \
-    specTableWidget.cpp
+    specTableWidget.cpp \
+    statisticWidget.cpp
 
 HEADERS += \
     addEnrolleeWidget.h \
@@ -34,7 +35,8 @@ HEADERS += \
     loginwidget.h \
     mainwindow.h \
     personalInfoWidget.h \
-    specTableWidget.h
+    specTableWidget.h \
+    statisticWidget.h
 
 FORMS += \
     mainwindow.ui
@@ -45,12 +47,18 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
+
 macx: LIBS += -L$$PWD/../../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/lib64/ -lmysqlcppconn.7.8.0.18
 
 INCLUDEPATH += $$PWD/../../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/include
 DEPENDPATH += $$PWD/../../../../../../../../../../usr/local/mysql-connector-c++-8.0.18/include
 
-macx: LIBS += -L$$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/lib/ -lmysqlclient.21
+#macx: LIBS += -L$$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/lib64/ -lmysqlcppconn8.2.8.0.18
 
-INCLUDEPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include
-DEPENDPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include
+#INCLUDEPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include
+#DEPENDPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.17-macos10.14-x86_64/include
+
+macx: LIBS += -L$$PWD/../../../../../../../../../../usr/local/mysql-8.0.18-macos10.14-x86_64/lib/ -lmysqlclient.21
+
+INCLUDEPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.18-macos10.14-x86_64/include
+DEPENDPATH += $$PWD/../../../../../../../../../../usr/local/mysql-8.0.18-macos10.14-x86_64/include

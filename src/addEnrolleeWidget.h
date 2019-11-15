@@ -6,6 +6,9 @@
 #include <QLabel>
 #include <QGridLayout>
 #include <QDialog>
+#include <QTableWidget>
+#include <QComboBox>
+#include <QCheckBox>
 #include "dbmaneger.h"
 
 class AddEnrolleeWidget : public QDialog
@@ -25,16 +28,6 @@ private:
     QPushButton* ok_button_;
     QPushButton* cancel_button_;
 
-    QLabel* id_label_;
-    QLabel* f_name_label_;
-    QLabel* s_name_label_;
-    QLabel* score_label_;
-    QLabel* spec_label_;
-    QLabel* pass_label_;
-    QLabel* date_of_birth_label_;
-    QLabel* place_of_birth_label_;
-    QLabel* address_label_;
-
     QLineEdit* id_le_;
     QLineEdit* f_name_le_;
     QLineEdit* s_name_le_;
@@ -45,7 +38,18 @@ private:
     QLineEdit* place_of_birth_le_;
     QLineEdit* address_le_;
 
-    QGridLayout* gl_;
+    QLineEdit* math_le_;
+    QLineEdit* physics_le_;
+    QLineEdit* bio_le_;
+    QLineEdit* chem_le_;
+    QLineEdit* his_le_;
+    QLineEdit* rus_le_;
+    QLineEdit* en_le_;
+
+    QComboBox* atestat_box_;
+
+    QCheckBox* passport_copy_radio_;
+    QCheckBox* med_form_radio_;
 
     DbManeger* db_handler_;
 };

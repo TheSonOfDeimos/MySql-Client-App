@@ -28,6 +28,7 @@ EnrolleeTable::EnrolleeTable(QWidget* parent)
 
 void EnrolleeTable::init()
 {
+    table_ -> setSortingEnabled(false);
     table_ -> setColumnCount(5);
     table_ -> setHorizontalHeaderLabels({"ID", "First name", "Second name", "Speciality", "Exam score"});
 
@@ -49,17 +50,30 @@ void EnrolleeTable::setDbHandler(DbManeger *handl)
 
 void EnrolleeTable::update()
 {
+    table_ -> setSortingEnabled(false);
     auto res = db_handler_ -> selectEnrolleBySpec(spec_list_.at(spec_select_box_ -> currentIndex()).first);
     table_ -> setRowCount(0);
     while(res -> next())
     {
         table_->setRowCount(table_ -> rowCount() + 1);
-        table_ -> setItem(table_ -> rowCount() - 1, 0, new QTableWidgetItem(QString::fromUtf8(res -> getString(1).asStdString().c_str())));
+
+        QTableWidgetItem* el1 = new QTableWidgetItem;
+        el1 -> setData(Qt::EditRole, res -> getInt(1));
+        table_ -> setItem(table_ -> rowCount() - 1, 0, el1);
         table_ -> setItem(table_ -> rowCount() - 1, 1, new QTableWidgetItem(QString::fromUtf8(res -> getString(2).asStdString().c_str())));
         table_ -> setItem(table_ -> rowCount() - 1, 2, new QTableWidgetItem(QString::fromUtf8(res -> getString(3).asStdString().c_str())));
-        table_ -> setItem(table_ -> rowCount() - 1, 3, new QTableWidgetItem(QString::fromUtf8(res -> getString(4).asStdString().c_str())));
-        table_ -> setItem(table_ -> rowCount() - 1, 4, new QTableWidgetItem(QString::fromUtf8(res -> getString(5).asStdString().c_str())));
+
+        QTableWidgetItem* el2 = new QTableWidgetItem;
+        el2 -> setData(Qt::EditRole, res -> getInt(4));
+        table_ -> setItem(table_ -> rowCount() - 1, 3, el2);
+
+        QTableWidgetItem* el3 = new QTableWidgetItem;
+        el3 -> setData(Qt::EditRole, res -> getInt(5));
+        table_ -> setItem(table_ -> rowCount() - 1, 4, el3);
     }
+
+    table_ -> setSortingEnabled(true);
+
 }
 
 void EnrolleeTable::addEnrolleeDlg()

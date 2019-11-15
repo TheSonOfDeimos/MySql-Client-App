@@ -29,6 +29,14 @@ private:
     QLineEdit* b_places_le_;
     QLineEdit* sp_places_le_;
 
+    QLineEdit* math_le_;
+    QLineEdit* physics_le_;
+    QLineEdit* bio_le_;
+    QLineEdit* chem_le_;
+    QLineEdit* his_le_;
+    QLineEdit* rus_le_;
+    QLineEdit* en_le_;
+
     QGridLayout* gl_;
 
     DbManeger* db_handler_;
