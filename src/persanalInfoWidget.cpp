@@ -199,6 +199,11 @@ void PersanalInfoWidget::setDbHandler(DbManeger *handl)
     med_form_radio_ -> setCheckState(med_form.toInt() == 1 ? Qt::Checked : Qt::Unchecked);
 
 
+    if (db_handler_ -> getRole() == DbManeger::ENROLLEE || db_handler_ -> getRole() == DbManeger::LOGINADMIN || db_handler_ -> getRole() == DbManeger::HEAD) {
+        ok_button_ -> hide();
+        cancel_button_ -> hide();
+    }
+
 }
 
 void PersanalInfoWidget::query()

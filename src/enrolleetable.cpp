@@ -41,6 +41,10 @@ void EnrolleeTable::init()
         spec_list_.push_back(std::make_pair(res -> getInt(1), res -> getString(2).asStdString()));
         spec_select_box_ -> addItem(QString::fromUtf8(spec_list_.back().second.c_str()));
     }
+
+    if (db_handler_ -> getRole() == DbManeger::ENROLLEE || db_handler_ -> getRole() == DbManeger::LOGINADMIN || db_handler_ -> getRole() == DbManeger::HEAD) {
+        add_enrollee_button_ -> hide();
+    }
 }
 
 void EnrolleeTable::setDbHandler(DbManeger *handl)
@@ -78,14 +82,20 @@ void EnrolleeTable::update()
 
 void EnrolleeTable::addEnrolleeDlg()
 {
+    if (db_handler_ -> getRole() == DbManeger::ENROLLEE || db_handler_ -> getRole() == DbManeger::LOGINADMIN || db_handler_ -> getRole() == DbManeger::HEAD) {
+        return;
+    }
     add_enrolle_widget_ = new AddEnrolleeWidget(this);
     add_enrolle_widget_ -> setDbHandler(db_handler_);
     add_enrolle_widget_ -> setVisible(1);
-    //add_enrolle_widget_ -> show();
 }
 
 void EnrolleeTable::showPersanalInfoDlg(QTableWidgetItem *item)
 {
+    if (db_handler_ -> getRole() == DbManeger::ENROLLEE || db_handler_ -> getRole() == DbManeger::LOGINADMIN) {
+        return;
+    }
+
     auto sender = QObject::sender();
     auto id = reinterpret_cast< QTableWidget* >(sender) -> item(item -> row(), 0);
     persanal_info_widget_ = new PersanalInfoWidget(nullptr, std::stoi(id->text().toStdString()));

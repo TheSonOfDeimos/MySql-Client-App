@@ -32,10 +32,18 @@ void SpecTableWidget::init()
     table_ -> setColumnCount(4);
     table_ -> setHorizontalHeaderLabels({"Speciality ID", "Speciality", "Budget places", "Self paid places"});
     update();
+
+    if (db_handler_ -> getRole() == DbManeger::ENROLLEE || db_handler_ -> getRole() == DbManeger::LOGINADMIN || db_handler_ -> getRole() == DbManeger::OFFICER) {
+        add_spec_button_ -> hide();
+    }
 }
 
 void SpecTableWidget::addSpec()
 {
+    if (db_handler_ -> getRole() == DbManeger::ENROLLEE || db_handler_ -> getRole() == DbManeger::LOGINADMIN || db_handler_ -> getRole() == DbManeger::OFFICER) {
+        return;
+    }
+
     add_spec_widget_ = new AddSpecWidget(nullptr);
     add_spec_widget_ -> setDbHandler(db_handler_);
     add_spec_widget_ -> show();

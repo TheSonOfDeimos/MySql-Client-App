@@ -65,7 +65,7 @@ void AddSpecWidget::init()
 void AddSpecWidget::query()
 {
 
-    db_handler_ -> addSpec(spec_num_le_ -> text().toInt(), spec_le_ -> text().toStdString(), b_places_le_ -> text().toInt(), sp_places_le_ -> text().toInt(), 10, 10, 10, 10);
+    db_handler_ -> addSpec(spec_num_le_ -> text().toInt(), spec_le_ -> text().toStdString(), b_places_le_ -> text().toInt(), sp_places_le_ -> text().toInt(), 10, 10, 10, 10, 1, 1, 1);
     db_handler_ -> addExamScore(spec_num_le_ -> text().toInt(), math_le_ -> text().toInt(), physics_le_ -> text().toInt(),
                                 bio_le_ -> text().toInt(), chem_le_ -> text().toInt(),
                                 his_le_ -> text().toInt(), rus_le_ -> text().toInt(),

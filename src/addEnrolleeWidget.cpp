@@ -95,8 +95,6 @@ void AddEnrolleeWidget::init()
     gl_ -> addItem(hb, 7,  7);
 
     setLayout(gl_);
-
-
 }
 
 void AddEnrolleeWidget::query()
@@ -112,4 +110,9 @@ void AddEnrolleeWidget::query()
 void AddEnrolleeWidget::setDbHandler(DbManeger *handl)
 {
     db_handler_ = handl;
+    if (db_handler_ -> getRole() == DbManeger::ENROLLEE || db_handler_ -> getRole() == DbManeger::LOGINADMIN || db_handler_ -> getRole() == DbManeger::HEAD) {
+        ok_button_ -> hide();
+        cancel_button_ -> hide();
+    }
+
 }

@@ -41,7 +41,5 @@ void  MainWindow::init()
     tab_ -> addTab(spec_table_, "Specialisations");
     tab_ -> addTab(statistic_table_, "Statistic");
     setCentralWidget(tab_);
-
-
 }
 
