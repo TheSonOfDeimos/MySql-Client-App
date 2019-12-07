@@ -125,6 +125,25 @@ std::shared_ptr< sql::ResultSet > DbManeger::selectEnrolleBySpec(int spec)
 }
 
 
+std::shared_ptr< sql::ResultSet > DbManeger::selectPotentioalStudents(int spec)
+{
+    std::string str = "SELECT * FROM mydb.enrollee_information WHERE spec_num = " + std::to_string(spec) + " AND id in (select mydb.enrollee_doc_list.id from mydb.enrollee_doc_list where atestat = 1) ORDER BY exam_score";
+    return queryToDb(str);
+}
+
+std::shared_ptr< sql::ResultSet > DbManeger::selectBudgetPlaces(int spec)
+{
+    std::string str = "SELECT budget_places FROM mydb.specialisation_list WHERE spec_num = " + std::to_string(spec);
+    return queryToDb(str);
+}
+
+std::shared_ptr< sql::ResultSet > DbManeger::selectSelfPaid(int spec)
+{
+    std::string str = "SELECT self_paid_places FROM mydb.specialisation_list WHERE spec_num = " + std::to_string(spec);
+    return queryToDb(str);
+}
+
+
 DbManeger::user_role_e DbManeger::checkGrants()
 {
     std::string str = "SHOW GRANTS FOR '" + user_ + "'@'localhost'";

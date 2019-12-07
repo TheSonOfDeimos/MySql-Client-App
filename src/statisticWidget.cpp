@@ -1,18 +1,26 @@
 #include "statisticWidget.h"
+#include <QVBoxLayout>
 
 StatisticWidget::StatisticWidget(QWidget *parent)
     : QWidget(parent)
 {
-    layout_ = new QHBoxLayout(this);
+    layout_ = new QGridLayout(this);
     table_ = new QTableWidget(this);
+    show_student_widget_ = new QPushButton("Potential student list", this);
     spec_select_box_ = new QComboBox(this);
 
-    layout_ -> addWidget(table_);
+    layout_ -> addWidget(table_, 0, 0);
+    QVBoxLayout* vbl = new QVBoxLayout(this);
+    layout_ -> addLayout(vbl, 0, 1);
+    vbl -> addWidget(spec_select_box_);
+    vbl -> addWidget(show_student_widget_);
+
     layout_ -> addWidget(spec_select_box_);
 
     setLayout(layout_);
 
     connect(spec_select_box_, SIGNAL(currentIndexChanged(int)), this, SLOT(update()));
+    connect(show_student_widget_, SIGNAL(clicked()), this, SLOT(showStudentWidget()));
 }
 
 void StatisticWidget::setDbHandler(DbManeger *handl)
@@ -60,4 +68,11 @@ void StatisticWidget::update()
         table_ -> setItem(table_ -> rowCount() - 1, 4, new QTableWidgetItem(QString::fromUtf8(res -> getString(5).asStdString().c_str())));
     }
 
+}
+
+void StatisticWidget::showStudentWidget()
+{
+    student_widget_ = new PotentioalStudentsWidget(nullptr, spec_list_.at(spec_select_box_ -> currentIndex()).first);
+    student_widget_ -> setDbHandler(db_handler_);
+    student_widget_ -> show();
 }

@@ -24,6 +24,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     persanalInfoWidget.cpp \
+    potentioalStudentsWidget.cpp \
     registerWidget.cpp \
     specTableWidget.cpp \
     statisticWidget.cpp
@@ -36,6 +37,7 @@ HEADERS += \
     loginwidget.h \
     mainwindow.h \
     personalInfoWidget.h \
+    potentioalStudentsWidget.h \
     registerWidget.h \
     specTableWidget.h \
     statisticWidget.h

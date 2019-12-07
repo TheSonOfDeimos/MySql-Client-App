@@ -5,7 +5,10 @@
 #include <QTableWidget>
 #include <QComboBox>
 #include <QHBoxLayout>
+#include <QPushButton>
+#include <QGridLayout>
 #include "dbmaneger.h"
+#include "potentioalStudentsWidget.h"
 
 class StatisticWidget : public QWidget
 {
@@ -18,14 +21,18 @@ public:
 public slots:
         void init();
         void update();
+        void showStudentWidget();
 
 private:
     QTableWidget* table_;
     QComboBox* spec_select_box_;
-    QHBoxLayout* layout_;
+    QGridLayout* layout_;
 
     DbManeger* db_handler_;
     std::vector< std::pair< int, std::string > > spec_list_;
+
+    PotentioalStudentsWidget* student_widget_;
+    QPushButton* show_student_widget_;
 
 };
 

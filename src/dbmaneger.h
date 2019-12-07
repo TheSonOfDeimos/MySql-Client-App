@@ -1,4 +1,4 @@
-#ifndef DBMANEGER_H
+﻿#ifndef DBMANEGER_H
 #define DBMANEGER_H
 
 #include <QApplication>
@@ -35,6 +35,9 @@ public:
 
     // View methods
     std::shared_ptr< sql::ResultSet > selectEnrolleBySpec(int spec);
+    std::shared_ptr< sql::ResultSet > selectPotentioalStudents(int spec);
+    std::shared_ptr< sql::ResultSet > selectBudgetPlaces(int spec);
+    std::shared_ptr< sql::ResultSet > selectSelfPaid(int spec);
 
     enum user_role_e
     {
